@@ -1,4 +1,4 @@
-## Non-face-to-face psychological counseling service using AI human
+# Non-face-to-face psychological counseling service using AI human
 - Purpose of the project
 	- Establishing a business plan using an Facial Expression Recognition classification model
   - Non-face-to-face psychological counseling treatment
