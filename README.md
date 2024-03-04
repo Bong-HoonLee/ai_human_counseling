@@ -104,6 +104,12 @@ You can check the list at config.py
 
 # service
 Psychological counseling chatbot
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/4a2bc3f4-b4a8-4ec2-aad5-f572fd586679)
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/05508f6d-584c-4583-8309-dbf97fa76512)
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/dc78a168-f231-4338-b860-f6dfe32e5e1b)
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/1b148322-33ce-4556-a9ad-a405e157b84a)
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/f7b551cc-9079-425b-89b3-fb4f9211c4bb)
+![image](https://github.com/Bong-HoonLee/ai_human_counseling/assets/115579916/d3102be8-bf17-4ae6-bcc3-97c6a9197510)
 
 ![image](https://github.com/Bong-HoonLee/EST_wassup01_TEAM__4/assets/115579916/1c7b9e27-bb62-4aad-b433-4d2825dd3bd5)
 
