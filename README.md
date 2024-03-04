@@ -41,14 +41,14 @@
 
 
 ## Dataset
--Image data
+1. Image data
 [AI Hub::한국인 감정인식을 위한 복합 영상](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=82)
 - Face photo by each emotion (joy, panic, anger, anxiety, hurt, sadness, neutral)
 - Total number of data: 500,000 source data
   - Train Data Count: 14000=2000*7
   - Test Data Count: 70000=1000*7
 
-- llm data
+2. llm data
 - Psychological counseling paper in severance hospital
   
 ## EDA
