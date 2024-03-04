@@ -29,11 +29,15 @@
 - `requirements.txt`: required libraries and packages 
 - `trainer.py`: main train&test logics
 
+## download pt, pth file
+- google Drive : https://drive.google.com/drive/u/1/folders/1wu5isYVQtwvYDPkegjZm8EFXciWLCmhP
+
 ## How to Run & Debug
 1) `pip install -r requirements.txt` to install required packages
-2) streamlit run main.py
-3) Drag image to sidebar uploading
-4) And Try Psychological counseling
+2) download pt, pth file and best.pt save "./archive/models/yolo/pt/bt" and other save "./tools/Wav2Lip/chechpoints"
+3) streamlit run main.py
+4) Drag image to sidebar uploading
+5) And Try Psychological counseling
 
 
 ## Dataset
