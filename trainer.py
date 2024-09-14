@@ -58,18 +58,18 @@ def evaluate(model, dataloaders, device, criterion):
     running_corrects = 0
     with torch.inference_mode():
     # Iterate over data.
-        for inputs, labels in dataloaders:
-            inputs = inputs.to(device)
+        for image, labels in dataloaders:
+            image = image.to(device)
             labels = labels.to(device)
 
             # forward
             # track history if only in train
-            outputs = model(inputs)
+            outputs = model(image)
             _, preds = torch.max(outputs, 1)
             loss = criterion(outputs, labels)
 
             # statistics
-            running_loss += loss.item() * inputs.size(0)
+            running_loss += loss.item() * image.size(0)
             running_corrects += torch.sum(preds == labels.data)
 
     epoch_loss = running_loss / dataset_sizes
@@ -107,7 +107,8 @@ def trainer(cfg):
     train_params = cfg.get('train_params')
     test_params = cfg.get('test_params')
     device = train_params.get('device')
-    torch.cuda.set_device(device) # change allocation of current GPU
+    if device != 'cpu':
+        torch.cuda.set_device(device) # change allocation of current GPU
     torch.cuda.manual_seed_all(777)
 
     loss_fn = train_params.get('loss_fn')
@@ -127,7 +128,7 @@ def trainer(cfg):
     my_model = model_conv.to(device)
 
     # preprocess
-    if choice_one == 17:
+    if choice_one == 18: # custom model
         transform = transforms.Compose([
         transforms.Resize((48, 48), antialias=True),
         transforms.ToTensor()
@@ -314,14 +315,17 @@ if __name__ == "__main__":
 
     elif set_mode == 'manytime':
         
+        # train log
         columns = ['training_mode', 'model_num', 'optim', 'image(EA)', 'freeze', 'epochs', 'batch', 'lr', 'weight_decay', 'PNG_NAME', 'early_stop_epoch', 'Tst_acc', 'Max_acc', 'Max_idx', 'trn_loss', 'tst_loss', 'Min_loss', 'Min_idx']
         df = pd.DataFrame(columns=columns)
         now = datetime.now(pytz.timezone('Asia/Seoul')).strftime("%d%H%M%S")
 
+        # load cfg
         target_dir = os.path.join('/home/KDT-admin/work/soyeon/EST_wassup01_TEAM__4/config_f', many_mode)
         cfg_list = sorted(os.listdir(target_dir))
+
+        # save log
         root_dir = '/home/KDT-admin/work/soyeon/EST_wassup01_TEAM__4/archive/train_log'
-        
         folder_name = now
         os.makedirs(os.path.join(root_dir, folder_name))
         save_dir = os.path.join(root_dir, folder_name)
@@ -337,7 +341,7 @@ if __name__ == "__main__":
                 optim_params = train_params.get('optim_params')
                 model_cfg = config.get('model_cfg')
 
-                new_data = {
+                log_dict = {
                     'training_mode': config.get('training_mode'),
                     'model_num': model_cfg.get('choice_one'),
                     'optim': str(train_params.get('optim')),
@@ -357,7 +361,7 @@ if __name__ == "__main__":
                     'Min_loss': round(Min_loss, 4),
                     'Min_idx': Min_idx
                 }
-                df = pd.concat([df, pd.DataFrame([new_data], columns=columns)], ignore_index=True)
+                df = pd.concat([df, pd.DataFrame([log_dict], columns=columns)], ignore_index=True)
                 df.to_csv(os.path.join(save_dir, 'result.csv'), index=False)
         
         
